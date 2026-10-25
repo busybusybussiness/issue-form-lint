@@ -1,0 +1,20 @@
+name: 'Issue Form Lint'
+description: 'Fails the build when a GitHub issue form (.github/ISSUE_TEMPLATE/*.yml) breaks the documented issue-form schema.'
+author: 'busybusybussiness'
+branding:
+  icon: 'check-square'
+  color: 'blue'
+inputs:
+  path:
+    description: 'File or directory of issue-form YAML files to check.'
+    required: false
+    default: '.github/ISSUE_TEMPLATE'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install PyYAML (pinned)
+      shell: bash
+      run: python3 -m pip install --quiet "pyyaml==6.0.3"
+    - name: Lint issue forms
+      shell: bash
+      run: python3 "${{ github.action_path }}/check_issue_forms.py" "${{ inputs.path }}"

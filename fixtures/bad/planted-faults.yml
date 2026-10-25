@@ -1,0 +1,26 @@
+name: Broken form
+description: ""
+body:
+  - type: input
+    id: version
+    attributes:
+      placeholder: "no label here"
+  - type: select
+    id: os
+    attributes:
+      label: OS
+      options: [Windows]
+  - type: dropdown
+    id: os
+    attributes:
+      label: Choice
+      options: []
+  - type: checkboxes
+    id: boxes
+    attributes:
+      label: Boxes
+      options:
+        - required: true
+  - type: markdown
+    attributes:
+      label: markdown with no value
